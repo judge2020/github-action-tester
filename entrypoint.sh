@@ -4,13 +4,13 @@ set -e
 #
 # If the script is present ..
 #
-if [ -e .github/run-tests.sh ]; then
+if [ -e $@ ]; then
 
     # Ensure it is executable.
-    chmod 755 .github/run-tests.sh
+    chmod 755 $@
 
     # Run it.
-    .github/run-tests.sh
+    $@
 
     # Preserve the exit-code
     exit $?
@@ -20,6 +20,6 @@ else
     #
     # Script is missing.
     #
-    echo "Repository does not contain test-script '.github/run-tests.sh'"
+    echo "The passed script does not exist."
     exit 1
 fi
